@@ -1,78 +1,161 @@
-" Included in every vim config
+" thanks so far to:
+" https://gist.github.com/benmccormick/4e4bc44d8135cfc43fc3
+" http://vimconfig.com/
+" http://vim.rtorr.com/
+" Ricky Zein, Justin McCandless, and others
+
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
 set nocompatible
+
+""" Stuff for Vundle:
+filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+"now list plugins, starting with Vundle
+Plugin 'VundleVim/Vundle.vim'
+" Fuzzy File Search
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'altercation/vim-colors-solarized'
+" Text/Variable Completion
+Plugin 'Valloric/YouCompleteMe'
+
+" Git wrapper for Vim
+Plugin 'tpope/vim-fugitive'
+
+" For SLIM syntax highlighting support
+Plugin 'slim-template/vim-slim'
+
+" For displaying the file tree
+Plugin 'scrooloose/nerdtree'
+
+" For using ack in Vim
+Plugin 'mileszs/ack.vim'
+" Sublime Text-like surround
+Plugin 'terryma/vim-multiple-cursors'
+" For nice comments
+Plugin 'scrooloose/nerdcommenter'
+call vundle#end()
+
+" nerdtree with ctrl+N
+map <C-N> :NERDTreeToggle<CR>
+
+" ruby-vim needs this for syntax-highlighting/completion
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+set linebreak
+" Make text wrap downwards instead of cutting it off
+set display+=lastline
+set textwidth=100
+
+" show 'bell' and don't make sound
+set visualbell
+
+" Maps jj to leaving insert mode (press twice quickly)
+imap jj <ESC>
+
+" Maps leader (\) to space
+let mapleader = "\<Space>"
+
+" Maps : to ;, removing the shift step
+nnoremap ; :
+
+" Save a session:
+map <leader>ss :mksession! ~/.vim_session <cr>
+
+" Restore a session:
+map <leader>sr :source ~/.vim_session <cr>
+
+" Automatically reload vimrc once it's saved
+augroup AutoReloadVimRC
+    au!
+      au BufWritePost $MYVIMRC so $MYVIMRC
+    augroup END
+
+" search stuff, not sure if want or not
+set hlsearch
+set smartcase
+set incsearch
+
+" tab/indents:
+set autoindent
+set expandtab
+set shiftwidth=2
+set smartindent
+set smarttab
+set softtabstop=2
+
+" Faster scrolling
+set lazyredraw
+
+set undolevels=1000
+
+" Make backspace less weird
+set backspace=indent,eol,start
+
+" use system clipboard, thanks to:
+" http://stackoverflow.com/questions/8757395/can-vim-use-the-system-clipboards-by-default
+set clipboard=unnamed,unnamedplus
+
+" show line number
+set number
+
+" put syntax highlighting on
+syntax enable
+
+" Allow hidden buffers, don't limit to 1 file per window/split
 set hidden
 
-set ruler "Bottom bar
-set number "Numbers
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show Unicode glyphs
-set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
-syntax on
-
-" Spaces and Indention
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set autoindent
-set backspace=indent,eol,start
-let &listchars="tab:\ \ ,trail:\x2e" " Highlight trailing whitespace
-set list
-
-" Search
-set hlsearch
-set incsearch
+" Lets you search using '/' ignoring case. Smart enough to see caps
 set ignorecase
 set smartcase
 
-" Backup/swap here
-set backupdir=~/.vim/swap/
-set directory=~/.vim/swap/
-" But don't
-set nobackup
-set nowritebackup
-set noswapfile
+" Type // to clear search highlight
+map //  :nohlsearch<CR>; echo 'Search highlight cleared' <CR>
 
-" OSx Clipboard happiness
-set clipboard=unnamed
+" Strip whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWritePre * :%s/\s\+$//e
 
-" Using the mouse is cool
-set mouse=a
-
-" Splelcheck
-set spell spelllang=en_us
-set nospell
-
-" Vim WordProc
-func! WordProcessorMode()
-  setlocal formatoptions=t1
-  setlocal noexpandtab
-  setlocal textwidth=80
-  setlocal smartindent
-  setlocal spell spelllang=en_us
-  setlocal complete+=s
-  setlocal wrap
-  setlocal linebreak
-  map j gj
-  map k gk
-  nnoremap <buffer> <leader>p gqip
-endfunc
-com! WP call WordProcessorMode()
-
-" Mappings
-let mapleader = ";" " Leader
-
-" Generic non-plugin specific mappings
-" source ~/.vim/mappings.vim
-
-" Show line highlight on Normal
-set cursorline
-au InsertLeave * set cursorline
-au InsertEnter * set nocursorline
+" Show the cursor position all the time
+set ruler
 
 
-" The colors
+
+" For Solarized Color Scheme (thanks! https://github.com/altercation/vim-colors-solarized)
 set background=dark
-let g:solarized_termcolors=256
+colorscheme solarized
 
-" FT Plugins, and syntax
-filetype plugin indent on
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+
+" For ctrlp file search plugin:
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+" Ignore some folders and files for CtrlP indexing
+" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$\|node_modules$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+let g:ctrlp_max_files=0
+let g:ctrlp_match_window = 'results:30'
+
+" Copy file paths
+" relative path
+nnoremap cp :let @+ = expand("%") <CR>
+
+" full path
+nnoremap cpp :let @+ = expand("%:p") <CR>
+
+" just filename
+nnoremap cpf :let @+ = expand("%:t") <CR>

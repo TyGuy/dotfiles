@@ -1,22 +1,13 @@
-# git
-alias g="git"
+# aliases
+alias c='clear'
+alias gp='git pull'
+alias gis='git status'
 
-# filesystem
-alias ..="cd ../"
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias ls='ls --color=auto'
-alias la="ls -al"
-alias o=$EDITOR
-alias dotf="cd $HOME/.dotfiles"
-alias t="todo.sh"
+openSublime() {
+    open -a Sublime\ Text $1
+}
+alias subl=openSublime
+alias penis="echo 8======D"
+alias zopts="subl ~/.zshrc"
 
-# PostGres Mac
-alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
-alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
-
-# Ruby Bundler
-alias be="bundle exec"
-
-# Mosh mouse support
-alias moshm="perl -E ' print \"\e[?1005h\e[?1002h\" ' && mosh"
+alias cdb='cd ~/codesomeshit/stafford_mccarty/realshit/buildings'
