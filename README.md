@@ -22,4 +22,4 @@ vi ~/.gitconfig
 This repo is designed to be forked and updated with your personal preferences. If you do this, whenever you change your dotfiles simply make a new git commit and push to github!  Woot. If you improve this repo and want to see your changes implemented here, please submit a Pull Request!
 
 ### Thanks
-Thanks to Ben (@Lordnibbler) for sharing this great setup!
+Thanks to Ben ([@Lordnibbler](https://github.com/lordnibbler)) for sharing this great setup!
