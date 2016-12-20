@@ -1,13 +1,40 @@
 [user]
 	name = Tyler Davis
-	email = tsdavis@stanford.edu
+	email = tee.s.davis@gmail.com
 [credential]
 	helper = osxkeychain
 [core]
-	editor = vi
+	excludesfile = ~/.gitignore
+	editor = vim
 [push]
 	default = simple
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[fetch]
+	prune = true
+[branch]
+  autosetupmerge = always
+  autosetuprebase = always
+[init]
+  templatedir = ~/.git_template
+[alias]
+  ctags = !.git/hooks/ctags
+	p = pull
+	pp = pull --prune
+  reci = commit --amend -CHEAD
+  br = branch -vv
+  ci = commit
+  co = checkout
+  dc = diff --cached
+  df = diff
+  lg = log -p
+  lgp = log --pretty=oneline --abbrev-commit
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  ls = ls-files
+  pl = !git fetch -p && git pull --ff-only
+  ss = show --stat
+  ssp = show --stat -p
+  st = status

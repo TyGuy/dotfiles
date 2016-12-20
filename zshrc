@@ -32,16 +32,18 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Applications/Firefox.app/Contents/MacOS:/Users/tylerdavis/vendor-lib"
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="~/.rbenv/shims:$PATH"
+
+# added by Heroku toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH="/usr/local/sbin:$PATH"
+export PATH="./bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
-export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS
-export PATH=$PATH:/Users/tylerdavis/vendor-lib
-
-export PATH="/usr/local/sbin:$PATH"
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"

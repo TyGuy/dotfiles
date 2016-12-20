@@ -1,9 +1,3 @@
-" thanks so far to:
-" https://gist.github.com/benmccormick/4e4bc44d8135cfc43fc3
-" http://vimconfig.com/
-" http://vim.rtorr.com/
-" Ricky Zein, Justin McCandless, and others
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible

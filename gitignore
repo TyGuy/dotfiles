@@ -6,6 +6,11 @@
 
 # ruby/rails bundled gems
 vendor/bundler
+bundle/cache
 
 # ctags files
 .tags*
+tags
+
+# js things
+node_modules/*

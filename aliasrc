@@ -1,13 +1,23 @@
-# aliases
+# terminal
 alias c='clear'
-alias gp='git pull'
-alias gis='git status'
 
-openSublime() {
-    open -a Sublime\ Text $1
-}
-alias subl=openSublime
+# git
+alias g="git"
+
+# filesystem
+alias ls='ls --color=auto'
+alias la="ls -al"
+
+# PostGres Mac
+alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+alias pgstop="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
+
+# Ruby, Rails, & Bundler
+alias be="bundle exec"
+alias rs="bundle exec rails s"
+alias rc='bundle exec rails c'
+alias bi="bundle install"
+alias dbm="bundle exec rake db:migrate"
+
+# penis
 alias penis="echo 8======D"
-alias zopts="subl ~/.zshrc"
-
-alias cdb='cd ~/codesomeshit/stafford_mccarty/realshit/buildings'
