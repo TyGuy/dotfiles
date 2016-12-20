@@ -3,3 +3,7 @@ config/hub
 
 # ignore fish history
 config/fish/fish*
+
+# ignore vim bundle besides Vundle
+vim/bundle/*
+!vim/bundle/Vundle.vim

@@ -32,6 +32,9 @@ plugins=(git)
 
 # User configuration
 
+# Aliases:
+[[ -s "$HOME/.aliasrc" ]] && source "$HOME/.aliasrc"
+
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 export PATH="~/.rbenv/shims:$PATH"
 
@@ -47,3 +50,10 @@ source $ZSH/oh-my-zsh.sh
 
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
+
+# Homebrew Github API Token:
+export HOMEBREW_GITHUB_API_TOKEN="ec5ffb78f97147277cd07b9b839b72d10c4dc167"
+
+# NVM stuff
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
