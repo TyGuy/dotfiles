@@ -51,8 +51,8 @@ source $ZSH/oh-my-zsh.sh
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
 
-# Homebrew Github API Token:
-export HOMEBREW_GITHUB_API_TOKEN="ec5ffb78f97147277cd07b9b839b72d10c4dc167"
+# some keys
+[[ -s "$HOME/.specifics" ]] && source "$HOME/.specifics"
 
 # NVM stuff
 export NVM_DIR="$HOME/.nvm"
