@@ -9,18 +9,19 @@
 [push]
 	default = simple
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
 	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [fetch]
 	prune = true
 [branch]
   autosetupmerge = always
   autosetuprebase = always
 [init]
-  templatedir = ~/.git_template
+	templatedir = ~/.git_template
 [alias]
-  ctags = !.git/hooks/ctags
+	ctags = !.git/hooks/ctags
 	p = pull
 	pp = pull --prune
   reci = commit --amend -CHEAD

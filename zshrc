@@ -42,9 +42,12 @@ export PATH="~/.rbenv/shims:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 export PATH="/usr/local/sbin:$PATH"
-export PATH="./bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
+
+# git thing -- depends on oh-my-zsh git thing
+gitShove () { git push -u origin $(current_branch) }
+alias gshove="gitShove"
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
@@ -57,3 +60,5 @@ eval "$(rbenv init -)"
 # NVM stuff
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+export PATH="./bin:$PATH"
