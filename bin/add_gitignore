@@ -1,0 +1,15 @@
+#!/usr/local/var/rbenv/shims/ruby
+
+PATH_TEMPLATE = "https://raw.githubusercontent.com/github/gitignore/master/{{replace}}.gitignore"
+
+unless (lang = ARGV[0])
+  puts "usgae: add_gitignore <lang-or-framework>"
+end
+
+lang = lang.downcase
+lang[0] = lang[0].upcase
+path = PATH_TEMPLATE.sub('{{replace}}', lang)
+
+puts "Getting gitignore file from #{path}"
+`wget -q --output-document=".gitignore" #{path}`
+puts 'DONE!'

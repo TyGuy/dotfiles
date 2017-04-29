@@ -21,3 +21,7 @@ alias dbm="bundle exec rake db:migrate"
 
 # penis
 alias penis="echo 8======D"
+
+# finder show/hide hidden files:
+alias finderShowFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias finderHideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
