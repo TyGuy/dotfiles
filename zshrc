@@ -5,7 +5,22 @@ export ZSH=/Users/tylerdavis/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# Powerline prompt stuff
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status time)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+# Add a space in the first prompt
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%f"
+# Visual customisation of the second prompt line
+local user_symbol="$"
+if [[ $(print -P "%#") =~ "#" ]]; then
+    user_symbol = "#"
+fi
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -28,7 +43,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git node rails)
 
 # User configuration
 
@@ -69,3 +84,12 @@ if [[ -s "$HOME/Library/Android/sdk" ]]; then
 fi
 
 export PATH="./bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
+export PATH="./scripts/bin:$PATH"
+
+# added by travis gem
+[ -f /Users/tylerdavis/.travis/travis.sh ] && source /Users/tylerdavis/.travis/travis.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
