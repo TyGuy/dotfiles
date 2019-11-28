@@ -8,7 +8,7 @@ I recommend placing this dotfiles directory in your home directory as well for e
 
 ```sh
 # to clone without submodules, remove `--recursive` flag
-git clone --recursive git@github.com:Lordnibbler/dotfiles.git ~/.dotfiles
+git clone --recursive https://github.com/TyGuy/dotfiles.git ~/.dotfiles
 
 # install the dotfiles symlinks
 cd ~/.dotfiles && .install.sh
@@ -22,4 +22,4 @@ vi ~/.gitconfig
 This repo is designed to be forked and updated with your personal preferences. If you do this, whenever you change your dotfiles simply make a new git commit and push to github!  Woot. If you improve this repo and want to see your changes implemented here, please submit a Pull Request!
 
 ### Thanks
-Thanks to Ben ([@Lordnibbler](https://github.com/lordnibbler)) for sharing this great setup!
+Thanks to Ben ([@Lordnibbler](https://github.com/lordnibbler)) for sharing his great setup with me!
