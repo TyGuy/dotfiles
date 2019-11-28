@@ -93,3 +93,5 @@ export PATH="./scripts/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export NPM_TOKEN=$(cat $HOME/.npmrc | grep npmjs | tr "=" "\n" | tail -n 1)
