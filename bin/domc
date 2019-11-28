@@ -5,7 +5,7 @@
 # Please copy, share, redistribute and improve
 
 if [ "$#" == "0" ]; then
-    echo "You need tu supply at least one argument!"
+    echo "You need to supply at least one argument!"
     exit 1
 fi
 

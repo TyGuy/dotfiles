@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# usage: heroku_copy_config SOURCE DEST VAR1,VAR2,VAR2
+source=$1
+dest=$2
+
+IFS=', ' read -r -a config_vars <<< $3
+
+echo $source
+echo $dest
+echo $config_vars[@]
+
+for key in "${config_vars[@]}"; do
+  echo "heroku config:set $key=$(heroku config:get $key -a $source) -a $dest"
+  heroku config:set $key=$(heroku config:get $key -a $source) -a $dest
+done
