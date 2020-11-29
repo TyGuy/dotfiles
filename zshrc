@@ -95,3 +95,8 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export NPM_TOKEN=$(cat $HOME/.npmrc | grep npmjs | tr "=" "\n" | tail -n 1)
+eval "$(pyenv init -)"
+export PATH="/usr/local/opt/postgresql@10/bin:$PATH"
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi

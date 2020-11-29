@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dir=$(pwd)
+
+cd $HOME/code/notes-scripts
+
+bundle exec ruby create_daily_note.rb
+# bundle exec ruby create_standup_template.rb
+
+cd $dir

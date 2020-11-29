@@ -1,0 +1,14 @@
+#!/bin/sh
+
+dir=$(pwd)
+
+
+cd $HOME/code/asana-scripts
+
+if [ -z "$1" ]; then
+  bundle exec ruby get_sprint_stats.rb
+else
+  bundle exec ruby get_sprint_stats.rb $1
+fi
+
+cd $dir

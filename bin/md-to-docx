@@ -1,0 +1,25 @@
+#!/usr/local/var/rbenv/shims/ruby
+
+INPUT_FORMAT = 'markdown'.freeze
+OUTPUT_FORMAT = 'docx'.freeze
+
+filename = ARGV[0]
+
+unless filename
+  puts "Usage: #{File.basename(__FILE__)} <markdown_file_name>"
+  exit
+end
+
+parts = filename.split('.')
+extension = parts.last
+file_base = parts[0..-2].join('.')
+
+if extension != 'md'
+  puts "WARNING: file extension '#{extension}' does not match input format #{INPUT_FORMAT}"
+end
+
+cmd = "pandoc \"#{filename}\" -f #{INPUT_FORMAT} -t #{OUTPUT_FORMAT} -o \"#{file_base}.docx\""
+
+puts "=> #{cmd}"
+
+`#{cmd}`
